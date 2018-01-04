@@ -42,9 +42,11 @@ public class PairController {
 
     @RequestMapping(value = "/getPair/{userId}", method = RequestMethod.GET)
     public ResponseEntity getPair(@PathVariable UUID userId){
-        return new ResponseEntity(repository.findAll().stream()
+      /*  return new ResponseEntity(repository.findAll().stream()
                 .filter(pairEntity -> pairEntity.getUserId().equals(userId))
                 .collect(Collectors.toList()), HttpStatus.OK);
+                */
+        return new ResponseEntity(repository.findPairsByUserId(userId), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/pair/{pairId}", method = RequestMethod.DELETE)
